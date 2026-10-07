@@ -80,4 +80,4 @@ The interactive analytics console surfaces high-level operation indicators for t
 3. **Asset Revenue Distribution**: A sorted horizontal bar leaderboard maps individual asset class performance, highlighting `BITSTAMP:BTCUSD` as the leading revenue driver.
 4. **End-User Interactivity**: Integrates high-visibility button tile slicers and chronological timeline banners, allowing users to instantly filter the entire data canvas by specific tokens or date parameters.
 
-Developed by Jzeus222 | BCom Marketing Management & Analytics
+Developed by Jesus Kazaji | BCom Marketing Management & Analytics
