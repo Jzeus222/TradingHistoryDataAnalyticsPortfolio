@@ -90,7 +90,7 @@ The completed analytics console converts raw transactional database streams from
 ## ⚠️ Data Limitations & Dashboard Validation Note
 
 **Important Professional Disclaimer:** 
-The metrics displayed in this dashboard ($13.08M Gross Profit vs. -$147.61K Drawdown across 25 trades) reflect an idealized, highly overfitted paper-trading simulation dataset generated via historical backtesting tools. 
+The metrics displayed in this dashboard ($13.08M($13.08K) Gross Profit vs. -$147.61K Drawdown across 25 total winning trades)across 80+ executed and exited trades reflect an idealized, highly overfitted paper-trading simulation dataset generated via historical backtesting tools. 
 
 From an institutional trading perspective, these figures represent an unrealistic risk-to-reward ratio. This project is explicitly designed as a **Data Engineering and Business Intelligence architectural showcase** to demonstrate:
 - End-to-end ETL pipeline construction (Python/Pandas)
