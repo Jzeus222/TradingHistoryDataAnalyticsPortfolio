@@ -80,4 +80,16 @@ The interactive analytics console surfaces high-level operation indicators for t
 3. **Asset Revenue Distribution**: A sorted horizontal bar leaderboard maps individual asset class performance, highlighting `BITSTAMP:BTCUSD` as the leading revenue driver.
 4. **End-User Interactivity**: Integrates high-visibility button tile slicers and chronological timeline banners, allowing users to instantly filter the entire data canvas by specific tokens or date parameters.
 
+## ⚠️ Data Limitations & Dashboard Validation Note
+
+**Important Professional Disclaimer:** 
+The metrics displayed in this dashboard ($13.08M Gross Profit vs. -$147.61K Drawdown across 25 trades) reflect an idealized, highly overfitted paper-trading simulation dataset generated via historical backtesting tools. 
+
+From an institutional trading perspective, these figures represent an unrealistic risk-to-reward ratio. This project is explicitly designed as a **Data Engineering and Business Intelligence architectural showcase** to demonstrate:
+- End-to-end ETL pipeline construction (Python/Pandas)
+- Relational warehousing and view optimization (SQL Server T-SQL)
+- Semantic data modeling and interactive dashboard layout (Power BI)
+
+In a production environment, the data pipeline would be paired with live exchange API hooks and true margin-account tracking to ensure realistic risk-adjusted performance reporting.
+
 Developed by Jesus Kazaji | BCom Marketing Management & Analytics
