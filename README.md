@@ -80,6 +80,13 @@ The interactive analytics console surfaces high-level operation indicators for t
 3. **Asset Revenue Distribution**: A sorted horizontal bar leaderboard maps individual asset class performance, highlighting `BITSTAMP:BTCUSD` as the leading revenue driver.
 4. **End-User Interactivity**: Integrates high-visibility button tile slicers and chronological timeline banners, allowing users to instantly filter the entire data canvas by specific tokens or date parameters.
 
+The completed analytics console converts raw transactional database streams from 80+ historical executions into unified portfolio health indicators:
+
+1. **Strategy Edge Measurement**: Features a responsive gauge tracking a **40% overall strategy win rate**, backed by a dedicated win/loss visual isolating **25 profitable winning trades** against tactical market closures.
+2. **Risk-Reward Evaluation**: Quantifies **$13.08M ($13,082.5K) in gross portfolio profits** against a tightly managed **maximum historical account drawdown of -$147.61K**, showcasing an optimized risk-to-reward ratio.
+3. **Asset Revenue Distribution**: Aggregates absolute yield metrics across distinct asset classes, isolating underlying performance trends and highlighting **BITSTAMP:BTCUSD** as the primary volume-driving trading pair.
+4. **Interactive Data Auditing**: Integrates high-visibility parameter slicers allowing forensic auditors to instantly filter the entire data canvas by specific token identifiers or custom chronological timeframes.
+
 ## ⚠️ Data Limitations & Dashboard Validation Note
 
 **Important Professional Disclaimer:** 
