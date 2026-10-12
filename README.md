@@ -24,7 +24,7 @@ A portfolio project demonstrating a small end-to-end workflow for cleaning histo
 
 ![Trading dashboard preview](dashboard_preview.png)
 
-The current dashboard reports approximately **$13.08K gross profit** and **-$147.61K maximum drawdown** for the included simulated dataset. These values are descriptive outputs from the sample data, not evidence of a viable strategy. Review the measures and assumptions in the project files before interpreting them.
+The current dashboard reports approximately **$13.08M gross profit** and **-$147.61K maximum drawdown** for the included simulated dataset. These values are descriptive outputs from the sample data, not evidence of a viable strategy. Review the measures and assumptions in the project files before interpreting them.
 
 ## Data pipeline
 
