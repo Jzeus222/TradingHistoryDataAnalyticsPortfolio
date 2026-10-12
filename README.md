@@ -26,6 +26,12 @@ A portfolio project demonstrating a small end-to-end workflow for cleaning histo
 
 The current dashboard reports approximately **$13.08M gross profit** and **-$147.61K maximum drawdown** for the included simulated dataset. These values are descriptive outputs from the sample data, not evidence of a viable strategy. Review the measures and assumptions in the project files before interpreting them.
 
+## Data model schema
+
+The diagram below shows the SQL Server data model used to organize the trade records and support the Power BI report.
+
+![Trading data model schema](data_model_schema.png)
+
 ## Data pipeline
 
 1. **Clean:** Python standardizes the exported fields and writes a cleaned data file.
