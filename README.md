@@ -1,102 +1,41 @@
-# 📈 End-to-End Trading Intelligence Data Pipeline & BI Dashboard
+# Trading History Analytics Pipeline & Power BI Dashboard
 
-An enterprise-ready data architecture and analytics pipeline that ingests historical multi-asset transaction records, processes them through a relational database engine, and delivers interactive visual business intelligence.
+A portfolio project demonstrating a small end-to-end workflow for cleaning historical paper-trading exports, storing trade records in SQL Server, and presenting summary measures in Power BI.
 
----
+> **Scope:** The included records are a simulated, historically backtested dataset. Dashboard values describe this dataset only; they are not live results, independently verified performance, or investment advice.
 
-## 🏆 Business Intelligence Dashboard Insights
-The finalized operational analytics console delivers live interactive metrics for comprehensive strategy tracking:
+## What the project demonstrates
 
-![Interactive Financial Dashboard Presentation](dashboard_preview.png)
+- Python data cleaning with Pandas, including whitespace cleanup and numeric type conversion.
+- SQL Server tables and views for organizing trade records and summarizing exit legs.
+- A Power BI model and dashboard for exploring the sample records.
 
----
+## Project files
 
-## 🗂️ Project Repository Structure
-This repository is organized into isolated layers to reflect standard production environment workflows:
+- `clean_trading_history.py` — cleans the source export.
+- `01_db_and_table_schema-SQLQuery1.sql` — creates the database schema.
+- `02_data_ingestion-SQLQuery2.sql` — loads records.
+- `03_analytical_views-SQLQuery3.sql` — creates summary views.
+- `TradingIntelligence_DataPipeLine_Dashboard.pbix` — Power BI file.
+- `TradingIntelligence_DataPipeLine_Dashboard.pdf` — dashboard export.
+- `dashboard_preview.png` and `data_model_schema.png` — visual references.
 
-```text
-TradingHistoryDataAnalyticsPortfolio/
-│
-├── 🗄️ 01_db_and_table_schema-SQLQuery1.sql   # Database setup & strict table schema definitions
-├── 🗄️ 02_data_ingestion-SQLQuery2.sql         # Transaction log history insertion scripts
-├── 🗄️ 03_analytical_views-SQLQuery3.sql       # Pre-computed reporting queries and win/loss logic
-├── 🐍 clean_trading_history.py                # Ingests TradingView files, parses dates, enforces types
-├── 📊 TradingIntelligence_DataPipeline.pbix   # Development Power BI workbook asset
-├── 🖼️ dashboard_preview.png                   # Active dashboard image asset
-└── 🖼️ data_model_schema.png                    # Backend database mapping asset
-```
+## Dashboard
 
----
+![Trading dashboard preview](dashboard_preview.png)
 
-## 🛠️ Data Pipeline Architecture
+The current dashboard reports approximately **$13.08K gross profit** and **-$147.61K maximum drawdown** for the included simulated dataset. These values are descriptive outputs from the sample data, not evidence of a viable strategy. Review the measures and assumptions in the project files before interpreting them.
 
-### Phase 1: Ingestion & Sanitation (Python)
-The foundational dataset originates from raw text log exports. To ready fields for relational indexing, a **Python (Pandas & NumPy)** script performs automated ETL operations:
-* Strips trailing whitespaces from core string headers via `.str.strip()`.
-* Enforces explicit type safety on decimal cash flows via `pd.to_numeric()`.
-* Exports sanitized rows into a standardized transactional flat file.
+## Data pipeline
 
-### Phase 2: Relational Warehousing (SQL Server)
-Data is structured within a local instance named `TradingIntelligenceDB` running on **Microsoft SQL Server (T-SQL)**. 
+1. **Clean:** Python standardizes the exported fields and writes a cleaned data file.
+2. **Store:** SQL Server holds the trade records and provides views for summary reporting.
+3. **Explore:** Power BI presents the resulting measures and filters.
 
-To offload heavy performance computations from the visual reporting dashboard, calculations are handled directly on the database engine through pre-aggregated virtual views:
-* **`v_SymbolPerformance`**: Groups metrics by asset ticker to isolate rolling volumes, gross margins, and baseline transaction counts.
-* **`v_WinLossMetrics`**: Implements conditional aggregation arrays to extract strategy win splits. By filtering exclusively on market `Exit` legs, it eliminates calculation errors introduced by paired entry records.
+The win-rate view counts winning and losing exit records and divides by half of the total row count, which assumes each trade has one entry row and one exit row. If that assumption changes, the denominator should be updated to count exit rows directly.
 
-```sql
-CREATE VIEW v_WinLossMetrics AS
-SELECT 
-    Symbol,
-    SUM(CASE WHEN Net_PnL_USD > 0 AND Type LIKE 'Exit%' THEN 1 ELSE 0 END) AS Winning_Trades,
-    SUM(CASE WHEN Net_PnL_USD <= 0 AND Type LIKE 'Exit%' THEN 1 ELSE 0 END) AS Losing_Trades,
-    CAST(SUM(CASE WHEN Net_PnL_USD > 0 AND Type LIKE 'Exit%' THEN 1 ELSE 0 END) * 100.0 / 
-         (COUNT(TradeNumber) / 2) AS DECIMAL(5,2)) AS Win_Rate_Percentage
-FROM ExecutedTrades
-GROUP BY Symbol;
-```
+## Limitations
 
-### 🔗 Semantic Data Model Architecture
-The relational database layer forms a structured Star Schema joined dynamically across unified asset parameters inside Power BI:
+The source is a paper-trading/backtest export and may be overfit or otherwise unrepresentative. Fees, slippage, margin, and other live-market effects may not be fully represented. The project is an analytics and data-modeling demonstration, not trading advice or a claim about future returns.
 
-![Data Model Schema Architecture](data_model_schema.png)
-
-### Phase 3: Advanced Metrics Engineering (DAX Engine)
-Advanced portfolio health variables are computed on demand using explicit **Data Analysis Expressions (DAX)** inside the reporting dashboard layer:
-* **True Realized Success Counter:** 
-  ```dax
-  Total Wins Count = COUNTROWS(FILTER(ExecutedTrades, ExecutedTrades[Net_PnL_USD] > 0 && (ExecutedTrades[Type] = "Exit short" || ExecutedTrades[Type] = "Exit long")))
-  ```
-* **Real-time Portfolio Drawdown Evaluation:** Continuously measures dynamic account equity variance from trailing historical capital high points down to current margins:
-  ```dax
-  Portfolio Drawdown USD = [Peak Equity] - SUM(ExecutedTrades[Cumulative_PnL_USD])
-  ```
-
----
-
-## 🏆 Business Impact & Visual Insights
-The interactive analytics console surfaces high-level operation indicators for trading audits:
-1. **Financial Health Monitoring**: Highlights **\$13.08M in gross portfolio profits** balanced against a formatted **-\$147.61K maximum historical account drawdown label**.
-2. **Strategy Efficiency Measurement**: A radial speedometer tracking gauge validates an overall strategy **win rate of 40%**.
-3. **Asset Revenue Distribution**: A sorted horizontal bar leaderboard maps individual asset class performance, highlighting `BITSTAMP:BTCUSD` as the leading revenue driver.
-4. **End-User Interactivity**: Integrates high-visibility button tile slicers and chronological timeline banners, allowing users to instantly filter the entire data canvas by specific tokens or date parameters.
-
-The completed analytics console converts raw transactional database streams from 80+ historical executions into unified portfolio health indicators:
-
-1. **Strategy Edge Measurement**: Features a responsive gauge tracking a **40% overall strategy win rate**, backed by a dedicated win/loss visual isolating **25 profitable winning trades** against tactical market closures.
-2. **Risk-Reward Evaluation**: Quantifies **$13.08M ($13,082.5K) in gross portfolio profits** against a tightly managed **maximum historical account drawdown of -$147.61K**, showcasing an optimized risk-to-reward ratio.
-3. **Asset Revenue Distribution**: Aggregates absolute yield metrics across distinct asset classes, isolating underlying performance trends and highlighting **BITSTAMP:BTCUSD** as the primary volume-driving trading pair.
-4. **Interactive Data Auditing**: Integrates high-visibility parameter slicers allowing forensic auditors to instantly filter the entire data canvas by specific token identifiers or custom chronological timeframes.
-
-## ⚠️ Data Limitations & Dashboard Validation Note
-
-**Important Professional Disclaimer:** 
-The metrics displayed in this dashboard ($13.08M($13.08K) Gross Profit vs. -$147.61K Drawdown across 25 total winning trades)across 80+ executed and exited trades reflect an idealized, highly overfitted paper-trading simulation dataset generated via historical backtesting tools. 
-
-From an institutional trading perspective, these figures represent an unrealistic risk-to-reward ratio. This project is explicitly designed as a **Data Engineering and Business Intelligence architectural showcase** to demonstrate:
-- End-to-end ETL pipeline construction (Python/Pandas)
-- Relational warehousing and view optimization (SQL Server T-SQL)
-- Semantic data modeling and interactive dashboard layout (Power BI)
-
-In a production environment, the data pipeline would be paired with live exchange API hooks and true margin-account tracking to ensure realistic risk-adjusted performance reporting.
-
-Developed by Jesus Kazaji | BCom Marketing Management & Analytics
+Developed by Jesus Kazaji | BCom Marketing Management
