@@ -44,4 +44,8 @@ The win-rate view counts winning and losing exit records and divides by half of 
 
 The source is a paper-trading/backtest export and may be overfit or otherwise unrepresentative. Fees, slippage, margin, and other live-market effects may not be fully represented. The project is an analytics and data-modeling demonstration, not trading advice or a claim about future returns.
 
+## Development Methodology
+
+Rather than writing boilerplate structural frameworks from scratch, my modern workspace workflow heavily incorporates advanced AI orchestration and expert-level prompt engineering. I leverage generative models to structure, refactor, and accelerate script creation while personally owning system architecture, debugging, database modeling, validation, and commercial strategic alignment.
+
 Developed by Jesus Kazaji | BCom Marketing Management
