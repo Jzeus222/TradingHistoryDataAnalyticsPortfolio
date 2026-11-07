@@ -21,6 +21,17 @@ An end-to-end data engineering framework built to clean, structure, and model hi
 
 This pipeline replaces manual, disjointed financial logging with an automated, structured data flow. It converts unstructured time-series flat files into structured relational databases, serving as a robust data model capable of supporting fast cross-filtering and executive-level analytics views.
 
+## 🧠 Core Engineering Objective: Multi-Row Logic & Financial Tracking
+
+The primary technical objective of this pipeline is to transform raw, asynchronous multi-row event logs into structured metrics that accurately track **win/loss ratios** and **peak-to-trough drawdowns**. 
+
+Because a single trade is split across separate entry and exit records over time, the system must logically pair these transactions to isolate the exact performance of the portfolio.
+
+### 📊 The Under-the-Hood Logic Implementation:
+* **Win vs. Loss Metrics (T-SQL Logical Matching):** Built database server views that programmatically isolate entry and exit pairs. The win-rate calculation dynamically groups closing executions, aggregates raw trading volume, and evaluates positive versus negative returns across the transaction lifecycle.
+* **Maximum Drawdown Tracking (Time-Series Aggregation):** Calculated the highest cumulative peak-to-trough drop in account equity ($147.61K maximum drawdown). This demonstrates the pipeline’s ability to run ordered time-series analysis, processing chronological financial data to track risk exposure limits.
+* **Data Ingestion Integrity (Python Data Prep):** Engineered a Python validation layer to strip data-breaking whitespace and enforce numeric type-casting on trading flat files, ensuring raw logs safely align with the relational SQL constraints without dropping records.
+
 ---
 
 ## 🏗️ Pipeline Architecture & Data Flow
