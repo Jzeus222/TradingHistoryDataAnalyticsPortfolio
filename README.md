@@ -66,7 +66,7 @@ graph LR
 
 ## 🚀 Key Professional Skills Demonstrated
 
-1. **Complex System Architecture:** Designing automated multi-tiered data transformations (Python ➡️ SQL Server ➡️ Power BI) that handle raw log inconsistencies gracefully.
+1. **Complex System Architecture:** Designing automated multi-tiered data transformations (Excel ➡️ Python ➡️ SQL Server ➡️ Power BI) that handle raw log inconsistencies gracefully.
 2. **Advanced Logic Mapping:** Writing conditional logic and analytics expressions (T-SQL/DAX) to evaluate operational behavior (such as tracking exit-entry pairings across disjointed transactional data tables).
 3. **AI-Driven Velocity:** Utilizing generative AI tools to rapidly generate template logic, debug script errors, and optimize code formatting, focusing human oversight entirely on pipeline integrity and data quality validation.
 
