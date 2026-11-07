@@ -17,7 +17,7 @@ An end-to-end data engineering framework built to clean, structure, and model hi
 ---
 
 ## 📌 Project Overview & Technical Scope
-* **Scope:** The included records are a simulated, historically backtested dataset. Dashboard values describe this dataset only; they are not live results, independently verified performance, or investment advice.
+> **Scope:** The included records are a simulated, historically backtested dataset. Dashboard values describe this dataset only; they are not live results, independently verified performance, or investment advice.
 
 This pipeline replaces manual, disjointed financial logging with an automated, structured data flow. It converts unstructured time-series flat files into structured relational databases, serving as a robust data model capable of supporting fast cross-filtering and executive-level analytics views.
 
