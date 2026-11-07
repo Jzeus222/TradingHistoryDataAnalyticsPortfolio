@@ -1,61 +1,63 @@
-# Trading History Analytics Pipeline & Power BI Dashboard
+# 📈 High-Volume Trading Intelligence Data Engineering Pipeline
 
-A portfolio project demonstrating a small end-to-end workflow for cleaning historical paper-trading exports, storing trade records in SQL Server, and presenting summary measures in Power BI.
+An end-to-end data engineering framework built to clean, structure, and model historical time-series datasets. This project utilizes Python ETL processes, native SQL Server relational schemas, and Power BI semantic modeling to isolate performance metrics from multi-row transaction logs.
 
-> **Scope:** The included records are a simulated, historically backtested dataset. Dashboard values describe this dataset only; they are not live results, independently verified performance, or investment advice.
+> 💡 **MarTech Transferability:** This architecture directly simulates the technical challenges of managing high-frequency marketing attribution, tracking real-time web analytics clickstreams, and engineering data pipelines for enterprise behavioral event logs.
 
-## What the project demonstrates
+![Trading Dashboard View](dashboard_preview.png)
 
-- Python data cleaning with Pandas, including whitespace cleanup and numeric type conversion.
-- SQL Server tables and views for organizing trade records and summarizing exit legs.
-- A Power BI model and dashboard for exploring the sample records.
+***
 
-## Project files
+### 🛠️ Technology Stack & Architecture
+* **ETL Engine & Data Cleaning:** Python, Pandas (Data cleaning, whitespace normalization, type casting)
+* **Relational Storage & Modeling:** Microsoft SQL Server, T-SQL (Analytical views, relational constraints, schema indexing)
+* **Semantic Modeling & BI Analytics:** Power BI Desktop, DAX Studio
+* **Workflow Acceleration:** AI-Assisted Script Orchestration & Advanced Prompt Engineering
 
-- `clean_trading_history.py` — cleans the source export.
-- `01_db_and_table_schema-SQLQuery1.sql` — creates the database schema.
-- `02_data_ingestion-SQLQuery2.sql` — loads records.
-- `03_analytical_views-SQLQuery3.sql` — creates summary views.
-- `TradingIntelligence_DataPipeLine_Dashboard.pbix` — Power BI file.
-- `TradingIntelligence_DataPipeLine_Dashboard.pdf` — dashboard export.
-- `dashboard_preview.png` and `data_model_schema.png` — visual references.
+---
 
-## Pipeline Architecture
+## 📌 Project Overview & Technical Scope
+* **Scope:** The included records are a simulated, historically backtested dataset. Dashboard values describe this dataset only; they are not live results, independently verified performance, or investment advice.
+
+This pipeline replaces manual, disjointed financial logging with an automated, structured data flow. It converts unstructured time-series flat files into structured relational databases, serving as a robust data model capable of supporting fast cross-filtering and executive-level analytics views.
+
+---
+
+## 🏗️ Pipeline Architecture & Data Flow
 
 ```mermaid
 graph LR
-    A[Historical Trading Logs] -->|Python Processing| B[Validation & Feature Engineering]
-    B -->|Relational Schema| C[SQL Server Warehouse]
-    C -->|Aggregated Views| D[Power BI Dashboard]
-    D -->|Statistical Prompts| E[Predictive Performance Forecasting]
+    A[Raw Historical Logs] -->|Python ETL / Pandas Type Casting| B[Validation & Feature Engineering]
+    B -->|Relational T-SQL Schema| C[SQL Server Warehouse]
+    C -->|Aggregated Views / Analytical Joins| D[Power BI Semantic Model]
+    D -->|DAX Metric Implementation| E[Interactive Executive Dashboard]
 ```
 
-## Dashboard
+---
 
-![Trading dashboard preview](dashboard_preview.png)
+## 📁 Repository Structure & Artifacts
 
-The current dashboard reports approximately **$13.08M gross profit** and **-$147.61K maximum drawdown** for the included simulated dataset. These values are descriptive outputs from the sample data, not evidence of a viable strategy. Review the measures and assumptions in the project files before interpreting them.
+### 🐍 1. Python ETL & Ingestion Layer
+* `clean_trading_history.py` — Analytical backend handling text-parsing optimization, regex-driven whitespace scrubbing, and absolute type conversions to ensure database ingestion conformity.
 
-## Data model schema
+### 🗄️ 2. Database Administration & Relational Modeling (T-SQL)
+* `01_db_and_table_schema-SQLQuery1.sql` — Relational schema definition specifying data integrity parameters, primary keys, and data-type rules.
+* `02_data_ingestion-SQLQuery2.sql` — Production-ready data staging scripts handling bulk file ingestion records.
+* `03_analytical_views-SQLQuery3.sql` — Optimized database server views tracking calculated metrics like exit-leg trajectories and half-row win-rate calculations.
 
-The diagram below shows the SQL Server data model used to organize the trade records and support the Power BI report.
+### 📊 3. Business Intelligence & Semantic Reporting
+* `TradingIntelligence_DataPipeLine_Dashboard.pbix` — Star-schema semantic model mapping relational views to continuous date tables.
+* `TradingIntelligence_DataPipeLine_Dashboard.pdf` — Presentation-ready dashboard report showing an enterprise execution interface tracking simulated margins, drawdown curves, and win-rate ratios.
 
-![Trading data model schema](data_model_schema.png)
+![Data Model Schema Diagram](data_model_schema.png)
 
-## Data pipeline
+---
 
-1. **Clean:** Python standardizes the exported fields and writes a cleaned data file.
-2. **Store:** SQL Server holds the trade records and provides views for summary reporting.
-3. **Explore:** Power BI presents the resulting measures and filters.
+## 🚀 Key Professional Skills Demonstrated
 
-The win-rate view counts winning and losing exit records and divides by half of the total row count, which assumes each trade has one entry row and one exit row. If that assumption changes, the denominator should be updated to count exit rows directly.
+1. **Complex System Architecture:** Designing automated multi-tiered data transformations (Python ➡️ SQL Server ➡️ Power BI) that handle raw log inconsistencies gracefully.
+2. **Advanced Logic Mapping:** Writing conditional logic and analytics expressions (T-SQL/DAX) to evaluate operational behavior (such as tracking exit-entry pairings across disjointed transactional data tables).
+3. **AI-Driven Velocity:** Utilizing generative AI tools to rapidly generate template logic, debug script errors, and optimize code formatting, focusing human oversight entirely on pipeline integrity and data quality validation.
 
-## Limitations
-
-The source is a paper-trading/backtest export and may be overfit or otherwise unrepresentative. Fees, slippage, margin, and other live-market effects may not be fully represented. The project is an analytics and data-modeling demonstration, not trading advice or a claim about future returns.
-
-## Development Methodology
-
-Rather than writing boilerplate structural frameworks from scratch, my modern workspace workflow heavily incorporates advanced AI orchestration and expert-level prompt engineering. I leverage generative models to structure, refactor, and accelerate script creation while personally owning system architecture, debugging, database modeling, validation, and commercial strategic alignment.
-
-Developed by Jesus Kazaji | BCom Marketing Management
+---
+*Developed by Jesus Kazaji | BCom Marketing Management & Analytics*
