@@ -20,6 +20,16 @@ A portfolio project demonstrating a small end-to-end workflow for cleaning histo
 - `TradingIntelligence_DataPipeLine_Dashboard.pdf` — dashboard export.
 - `dashboard_preview.png` and `data_model_schema.png` — visual references.
 
+## Pipeline Architecture
+
+```mermaid
+graph LR
+    A[Historical Trading Logs] -->|Python Processing| B[Validation & Feature Engineering]
+    B -->|Relational Schema| C[SQL Server Warehouse]
+    C -->|Aggregated Views| D[Power BI Dashboard]
+    D -->|Statistical Prompts| E[Predictive Performance Forecasting]
+```
+
 ## Dashboard
 
 ![Trading dashboard preview](dashboard_preview.png)
